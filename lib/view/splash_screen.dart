@@ -1,0 +1,47 @@
+import 'dart:async';
+
+import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:my_new_app/screens/home_screen.dart';
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Timer(Duration(seconds: 2),(){
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
+    });
+  }
+  @override
+  Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height*1;
+
+    return  Scaffold(
+      body: Container(
+
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset('images/splash_pic.jpg',
+            fit: BoxFit.contain,
+            height: height*.5,
+            ),
+            SizedBox(height: height*.0004,),
+            Text('TOP HEADLINES',
+              style: GoogleFonts.anton(letterSpacing: .6,color: Colors.grey.shade700),),
+            SizedBox(height: height*.04,),
+            SpinKitChasingDots(color: Colors.blueAccent,)
+          ],
+        ),
+      ),
+    );
+  }
+}
